@@ -18,15 +18,14 @@
   --text:#eeeef5;--text2:#7878a0;--text3:#3a3a55;
   --glow-green:0 0 20px rgba(0,255,163,0.15);
   --glow-red:0 0 20px rgba(255,45,85,0.15);
+  --angel:#ff6b00;--angel2:rgba(255,107,0,0.12);
 }
 *{margin:0;padding:0;box-sizing:border-box;}
 html{scroll-behavior:smooth;}
 body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;min-height:100vh;overflow-x:hidden;}
-
-/* scanlines */
 body::before{content:'';position:fixed;inset:0;background:repeating-linear-gradient(0deg,transparent,transparent 3px,rgba(0,0,0,0.06) 3px,rgba(0,0,0,0.06) 4px);pointer-events:none;z-index:9999;}
 
-/* ── NAV ── */
+/* NAV */
 .nav{position:sticky;top:0;z-index:500;background:rgba(5,5,10,0.96);backdrop-filter:blur(20px);border-bottom:1px solid var(--border2);display:flex;align-items:center;padding:0 20px;height:50px;gap:4px;}
 .logo{font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:3px;margin-right:20px;flex-shrink:0;}
 .logo span{color:var(--green);}
@@ -39,7 +38,7 @@ body::before{content:'';position:fixed;inset:0;background:repeating-linear-gradi
 .ndot{width:6px;height:6px;border-radius:50%;background:var(--green);animation:npulse 2s infinite;}
 @keyframes npulse{0%,100%{opacity:1;box-shadow:0 0 0 0 rgba(0,255,163,0.4)}50%{opacity:0.6;box-shadow:0 0 0 4px rgba(0,255,163,0)}}
 
-/* ── PAGES ── */
+/* PAGES */
 .page{display:none;padding:20px;max-width:1140px;margin:0 auto;}
 .page.active{display:block;animation:fadeUp 0.25s ease both;}
 @keyframes fadeUp{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
@@ -48,7 +47,7 @@ body::before{content:'';position:fixed;inset:0;background:repeating-linear-gradi
 .ph span{color:var(--green);}
 .ps{font-size:12px;color:var(--text2);margin-bottom:18px;font-family:'JetBrains Mono',monospace;}
 
-/* ── KPI GRID ── */
+/* KPI GRID */
 .kpi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:8px;margin-bottom:16px;}
 .kpi{background:var(--bg2);border:1px solid var(--border2);border-radius:8px;padding:12px 14px;position:relative;overflow:hidden;cursor:default;}
 .kpi::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--acc,var(--green));}
@@ -57,14 +56,14 @@ body::before{content:'';position:fixed;inset:0;background:repeating-linear-gradi
 .kpi-v{font-family:'Bebas Neue',sans-serif;font-size:26px;letter-spacing:1px;line-height:1;}
 .kpi-s{font-size:9px;color:var(--text2);margin-top:2px;font-family:'JetBrains Mono',monospace;}
 
-/* ── LIVE DATA SECTION ── */
+/* LIVE */
 .live-section{background:var(--bg2);border:1px solid var(--border2);border-radius:10px;padding:16px;margin-bottom:16px;}
 .live-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;flex-wrap:wrap;gap:8px;}
 .live-title{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--cyan);display:flex;align-items:center;gap:8px;}
-.live-badge{background:rgba(0,212,255,0.1);border:1px solid rgba(0,212,255,0.2);border-radius:4px;padding:2px 8px;font-size:9px;font-family:'JetBrains Mono',monospace;color:var(--cyan);}
+.live-badge{background:var(--angel2);border:1px solid rgba(255,107,0,0.3);border-radius:4px;padding:2px 8px;font-size:9px;font-family:'JetBrains Mono',monospace;color:var(--angel);}
 .api-setup{display:flex;gap:8px;align-items:center;flex-wrap:wrap;}
 .api-input{background:var(--bg3);border:1px solid var(--border3);border-radius:6px;padding:7px 12px;color:var(--text);font-family:'JetBrains Mono',monospace;font-size:11px;width:280px;outline:none;transition:border-color 0.2s;}
-.api-input:focus{border-color:var(--cyan);}
+.api-input:focus{border-color:var(--angel);}
 .api-input::placeholder{color:var(--text3);}
 
 /* option chain table */
@@ -80,7 +79,6 @@ body::before{content:'';position:fixed;inset:0;background:repeating-linear-gradi
 .oc-table td{padding:7px 10px;border-bottom:1px solid var(--border);text-align:center;font-family:'JetBrains Mono',monospace;transition:background 0.1s;}
 .oc-table tr:hover td{background:rgba(255,255,255,0.02);}
 .oc-table td.strike-cell{background:var(--bg4);color:var(--amber);font-weight:700;font-size:12px;border-left:1px solid var(--border2);border-right:1px solid var(--border2);}
-.oc-table td.atm td,.oc-table tr.atm-row td{background:rgba(255,184,0,0.04);}
 .ce-ltp{color:var(--green);font-weight:600;}
 .pe-ltp{color:var(--red);font-weight:600;}
 .oi-up{color:var(--green);}
@@ -89,7 +87,7 @@ body::before{content:'';position:fixed;inset:0;background:repeating-linear-gradi
 .pe-col{background:rgba(255,45,85,0.02);}
 .greeks-val{color:var(--text2);font-size:10px;}
 
-/* live quote strip */
+/* quote strip */
 .quote-strip{display:flex;gap:8px;margin-bottom:12px;flex-wrap:wrap;}
 .quote-card{background:var(--bg3);border:1px solid var(--border2);border-radius:8px;padding:10px 14px;min-width:120px;flex:1;}
 .qc-sym{font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--text2);margin-bottom:4px;}
@@ -98,7 +96,7 @@ body::before{content:'';position:fixed;inset:0;background:repeating-linear-gradi
 .qc-chg.up{color:var(--green);}
 .qc-chg.dn{color:var(--red);}
 
-/* ── FORM ── */
+/* FORM */
 .fsec{font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--text2);margin:16px 0 10px;display:flex;align-items:center;gap:10px;}
 .fsec::after{content:'';flex:1;height:1px;background:var(--border2);}
 .fgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(175px,1fr));gap:10px;margin-bottom:10px;}
@@ -108,7 +106,6 @@ body::before{content:'';position:fixed;inset:0;background:repeating-linear-gradi
 .fg input:focus,.fg select:focus,.fg textarea:focus{border-color:var(--green);box-shadow:0 0 0 3px rgba(0,255,163,0.05);}
 .fg select option{background:#16162a;}
 .fg textarea{resize:vertical;min-height:52px;}
-/* stock search */
 .ss-wrap{position:relative;}
 .ss-dd{position:absolute;top:100%;left:0;right:0;background:var(--bg3);border:1px solid var(--border2);border-radius:8px;max-height:220px;overflow-y:auto;z-index:100;display:none;margin-top:2px;scrollbar-width:thin;scrollbar-color:var(--border3) transparent;}
 .ss-dd.open{display:block;}
@@ -118,14 +115,13 @@ body::before{content:'';position:fixed;inset:0;background:repeating-linear-gradi
 .ss-sym{font-family:'JetBrains Mono',monospace;font-weight:700;color:#fff;min-width:90px;}
 .ss-name{font-size:10px;color:var(--text2);flex:1;}
 .ss-lot{font-size:10px;color:var(--text3);background:var(--bg4);padding:1px 6px;border-radius:3px;flex-shrink:0;}
-/* calc box */
 .calc{background:var(--bg3);border:1px solid var(--border2);border-radius:8px;padding:12px 14px;margin-bottom:16px;}
 .calc-row{display:flex;justify-content:space-between;align-items:center;padding:5px 0;border-bottom:1px solid var(--border);font-size:12px;}
 .calc-row:last-child{border-bottom:none;}
 .calc-l{color:var(--text2);}
 .calc-v{font-family:'JetBrains Mono',monospace;font-weight:700;}
 
-/* ── BUTTONS ── */
+/* BUTTONS */
 .btn{padding:9px 18px;border-radius:7px;font-family:'DM Sans',sans-serif;font-size:12px;font-weight:700;cursor:pointer;border:none;transition:all 0.15s;letter-spacing:0.3px;}
 .btn-p{background:var(--green);color:#000;}
 .btn-p:hover{background:var(--green2);transform:translateY(-1px);}
@@ -137,9 +133,11 @@ body::before{content:'';position:fixed;inset:0;background:repeating-linear-gradi
 .btn-d:hover{background:rgba(255,45,85,0.15);}
 .btn-b{background:var(--blue2);color:var(--blue);border:1px solid rgba(61,142,255,0.2);}
 .btn-c{background:var(--cyan2);color:var(--cyan);border:1px solid rgba(0,212,255,0.2);}
+.btn-angel{background:var(--angel2);color:var(--angel);border:1px solid rgba(255,107,0,0.3);}
+.btn-angel:hover{background:rgba(255,107,0,0.22);}
 .brow{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px;}
 
-/* ── LOG TABLE ── */
+/* LOG TABLE */
 .lctrl{display:flex;gap:8px;margin-bottom:12px;flex-wrap:wrap;}
 .lctrl input,.lctrl select{background:var(--bg2);border:1px solid var(--border2);border-radius:6px;padding:6px 10px;color:var(--text);font-family:'DM Sans',sans-serif;font-size:11px;outline:none;}
 .lctrl input:focus,.lctrl select:focus{border-color:var(--green);}
@@ -164,7 +162,7 @@ body::before{content:'';position:fixed;inset:0;background:repeating-linear-gradi
 .ab-close{background:rgba(0,255,163,0.1);color:var(--green);}
 .ab-del{background:rgba(255,45,85,0.08);color:var(--red);}
 
-/* ── ANALYTICS ── */
+/* ANALYTICS */
 .agrid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px;}
 .acard{background:var(--bg2);border:1px solid var(--border2);border-radius:10px;padding:14px 16px;}
 .acard h3{font-size:9px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--text2);margin-bottom:12px;}
@@ -177,42 +175,42 @@ body::before{content:'';position:fixed;inset:0;background:repeating-linear-gradi
 .eq-b{flex:1;border-radius:2px 2px 0 0;min-width:5px;cursor:pointer;position:relative;}
 .eq-b:hover::after{content:attr(data-tip);position:absolute;bottom:110%;left:50%;transform:translateX(-50%);background:var(--bg4);border:1px solid var(--border2);padding:3px 7px;border-radius:4px;font-size:10px;white-space:nowrap;color:var(--text);font-family:'JetBrains Mono',monospace;z-index:50;}
 
-/* ── MODAL ── */
+/* MODAL */
 .moverlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.8);z-index:600;align-items:center;justify-content:center;backdrop-filter:blur(6px);}
 .moverlay.open{display:flex;}
 .modal{background:var(--bg2);border:1px solid var(--border2);border-radius:12px;padding:22px;max-width:420px;width:92%;max-height:90vh;overflow-y:auto;animation:su 0.2s ease;}
 @keyframes su{from{transform:translateY(14px);opacity:0}to{transform:translateY(0);opacity:1}}
 .modal h2{font-family:'Bebas Neue',sans-serif;font-size:24px;letter-spacing:1px;margin-bottom:16px;}
 
-/* ── BACKUP ── */
+/* BACKUP */
 .drop-zone{border:2px dashed var(--border2);border-radius:10px;padding:32px;text-align:center;cursor:pointer;transition:all 0.2s;margin-bottom:12px;}
 .drop-zone:hover,.drop-zone.over{border-color:var(--green);background:rgba(0,255,163,0.02);}
 .info-box{border-radius:8px;padding:14px 16px;font-size:12px;line-height:1.8;margin-bottom:10px;}
 .info-amber{background:rgba(255,184,0,0.06);border:1px solid rgba(255,184,0,0.15);border-left:3px solid var(--amber);}
 .info-green{background:rgba(0,255,163,0.04);border:1px solid rgba(0,255,163,0.12);border-left:3px solid var(--green);}
 .info-red{background:rgba(255,45,85,0.05);border:1px solid rgba(255,45,85,0.12);border-left:3px solid var(--red);}
+.info-angel{background:var(--angel2);border:1px solid rgba(255,107,0,0.2);border-left:3px solid var(--angel);}
 
-/* ── TOAST ── */
+/* TOAST */
 .toast{position:fixed;bottom:18px;right:18px;background:var(--bg3);border:1px solid var(--border2);border-radius:8px;padding:10px 16px;font-size:12px;z-index:700;opacity:0;transform:translateY(8px);transition:all 0.25s;pointer-events:none;max-width:300px;}
 .toast.show{opacity:1;transform:translateY(0);}
 .toast.s{border-left:3px solid var(--green);}
 .toast.e{border-left:3px solid var(--red);}
 .toast.w{border-left:3px solid var(--amber);}
 
-/* ── SCANNER PERF ── */
+/* SCANNER PERF */
 .sc-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:16px;}
 .sc-card{background:var(--bg2);border:1px solid var(--border2);border-radius:10px;padding:14px 16px;}
 .sc-name{font-family:'Bebas Neue',sans-serif;font-size:18px;letter-spacing:1px;margin-bottom:10px;}
 .sc-stat{display:flex;justify-content:space-between;padding:4px 0;border-bottom:1px solid var(--border);font-size:11px;}
 .sc-stat:last-child{border-bottom:none;}
 
-/* EMPTY */
+/* TOTP helper box */
+.totp-helper{background:var(--bg3);border:1px solid rgba(255,107,0,0.2);border-radius:8px;padding:12px 14px;margin-top:10px;font-size:11px;line-height:1.8;color:var(--text2);}
+.totp-helper strong{color:var(--angel);}
+
 .empty{text-align:center;padding:40px 20px;color:var(--text2);}
 .empty .ei{font-size:32px;margin-bottom:8px;}
-
-/* QUICK ENTRY STRIP */
-.qe-strip{background:var(--bg2);border:1px solid rgba(0,255,163,0.15);border-radius:10px;padding:14px 16px;margin-bottom:16px;display:flex;gap:10px;align-items:flex-end;flex-wrap:wrap;}
-.qe-title{width:100%;font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--green);margin-bottom:4px;}
 
 @media(max-width:600px){
   .kpi-grid{grid-template-columns:repeat(2,1fr);}
@@ -224,6 +222,7 @@ body::before{content:'';position:fixed;inset:0;background:repeating-linear-gradi
 </head>
 <body>
 
+<!-- NAV -->
 <nav class="nav">
   <div class="logo">TRADE<span>X</span></div>
   <div class="tabs">
@@ -240,6 +239,7 @@ body::before{content:'';position:fixed;inset:0;background:repeating-linear-gradi
   </div>
 </nav>
 
+<!-- DASHBOARD -->
 <div class="page active" id="page-dash">
   <div class="ph">TRADE <span>DASHBOARD</span></div>
   <div class="ps" id="dash-date"></div>
@@ -257,40 +257,56 @@ body::before{content:'';position:fixed;inset:0;background:repeating-linear-gradi
   </div>
 </div>
 
+<!-- LIVE DATA -->
 <div class="page" id="page-live">
   <div class="ph">LIVE <span>MARKET DATA</span></div>
-  <div class="ps">Powered by Angel One API — Real-time LTP, OI, IV, Greeks</div>
+  <div class="ps">Powered by AngelOne SmartAPI — Real-time LTP, OI, IV</div>
 
+  <!-- AngelOne API Setup -->
   <div class="live-section">
     <div class="live-header">
-      <div class="live-title">🔑 Angel One API Setup <span class="live-badge">FREE with Angel One Account</span></div>
+      <div class="live-title">🔑 AngelOne SmartAPI Setup <span class="live-badge">ANGEL ONE</span></div>
     </div>
     <div style="font-size:12px;color:var(--text2);margin-bottom:12px;line-height:1.8;">
-      Get your free API Key from <strong style="color:var(--cyan)">smartapi.angelbroking.com → Apps</strong>. Generate your JWT Token using your client credentials.
+      Get your credentials from <strong style="color:var(--angel)">smartapi.angelbroking.com → My Account → API Settings</strong>.<br>
+      You need: <strong style="color:var(--text)">API Key</strong> + <strong style="color:var(--text)">Client ID (Angel account)</strong> + <strong style="color:var(--text)">Password</strong> + <strong style="color:var(--text)">TOTP code</strong> (from your authenticator app).
     </div>
     <div class="api-setup">
-      <input class="api-input" id="angel-jwt" placeholder="Paste Angel One JWT Token (Bearer) here..." type="password">
-      <input class="api-input" id="angel-apikey" placeholder="SmartAPI Key (e.g. jSdf12D)" style="width:200px;">
-      <button class="btn btn-c" onclick="saveToken()">Save Token</button>
-      <button class="btn btn-g" onclick="testToken()">Test Connection</button>
+      <input class="api-input" id="ao-apikey" placeholder="API Key (e.g. 43vRP9eM)" style="width:180px;">
+      <input class="api-input" id="ao-client" placeholder="Client ID (Angel login ID)" style="width:180px;">
+      <input class="api-input" id="ao-password" placeholder="Angel password" type="password" style="width:180px;">
+      <input class="api-input" id="ao-totp" placeholder="6-digit TOTP from app" style="width:160px;" maxlength="6">
     </div>
-    <div id="token-status" style="margin-top:8px;font-size:11px;font-family:'JetBrains Mono',monospace;"></div>
+    <div class="brow" style="margin-top:10px;">
+      <button class="btn btn-angel" onclick="saveAngelCreds()">💾 Save Credentials</button>
+      <button class="btn btn-angel" onclick="angelLogin()">🔐 Login & Get Token</button>
+      <button class="btn btn-g" onclick="testAngelConnection()">✓ Test Connection</button>
+    </div>
+    <div id="ao-status" style="margin-top:8px;font-size:11px;font-family:'JetBrains Mono',monospace;"></div>
+
+    <div class="totp-helper">
+      <strong>⚙️ How to set up TOTP:</strong> In Angel One app → Profile → Enable TOTP → Scan QR with Google Authenticator / Authy.<br>
+      <strong>🔄 Token validity:</strong> JWT token expires daily. Click "Login & Get Token" each morning before trading.<br>
+      <strong>⚠️ CORS note:</strong> Save this HTML file to your desktop and open with Chrome (file:/// path) for full API access.
+    </div>
   </div>
 
+  <!-- Index Quotes -->
   <div class="live-section">
     <div class="live-header">
       <div class="live-title">📡 Index Live Quotes</div>
       <div style="display:flex;gap:8px;align-items:center;">
         <span id="quote-time" style="font-size:10px;color:var(--text2);font-family:'JetBrains Mono',monospace;"></span>
-        <button class="btn btn-c" style="padding:5px 12px;font-size:10px;" onclick="fetchQuotes()">⟳ Refresh</button>
+        <button class="btn btn-angel" style="padding:5px 12px;font-size:10px;" onclick="fetchQuotes()">⟳ Refresh</button>
         <button class="btn btn-g" style="padding:5px 12px;font-size:10px;" id="auto-btn" onclick="toggleAuto()">Auto: OFF</button>
       </div>
     </div>
     <div class="quote-strip" id="quote-strip">
-      <div style="color:var(--text2);font-size:12px;padding:8px;">Connect Angel One API above to see live quotes</div>
+      <div style="color:var(--text2);font-size:12px;padding:8px;">Login with AngelOne above to see live quotes</div>
     </div>
   </div>
 
+  <!-- Option Chain -->
   <div class="live-section">
     <div class="live-header">
       <div class="live-title">📊 Live Option Chain</div>
@@ -308,17 +324,18 @@ body::before{content:'';position:fixed;inset:0;background:repeating-linear-gradi
         <option>Next Week</option>
         <option>Monthly</option>
       </select>
-      <button class="btn btn-c" style="padding:6px 14px;font-size:11px;" onclick="fetchOptionChain()">Load Chain</button>
+      <button class="btn btn-angel" style="padding:6px 14px;font-size:11px;" onclick="fetchOptionChain()">Load Chain</button>
       <button class="btn btn-g" style="padding:6px 14px;font-size:11px;" onclick="fetchOptionChain()">⟳ Refresh</button>
       <span style="font-size:10px;color:var(--text2);font-family:'JetBrains Mono',monospace;" id="oc-status"></span>
     </div>
     <div style="overflow-x:auto;" id="oc-wrap">
-      <div style="color:var(--text2);font-size:12px;padding:16px;text-align:center;">Connect Angel One API and click Load Chain</div>
+      <div style="color:var(--text2);font-size:12px;padding:16px;text-align:center;">Login with AngelOne and click Load Chain</div>
     </div>
     <div style="margin-top:10px;padding:10px;background:var(--bg3);border-radius:6px;font-size:11px;color:var(--text2);line-height:1.7;" id="oc-analysis"></div>
   </div>
 </div>
 
+<!-- NEW TRADE -->
 <div class="page" id="page-new">
   <div class="ph">NEW <span>TRADE</span></div>
   <div class="ps">Lot size fills automatically. Fill exit section after closing the trade.</div>
@@ -438,6 +455,7 @@ body::before{content:'';position:fixed;inset:0;background:repeating-linear-gradi
   </div>
 </div>
 
+<!-- LOG -->
 <div class="page" id="page-log">
   <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;flex-wrap:wrap;gap:10px;">
     <div class="ph" style="margin-bottom:0;">TRADE <span>LOG</span></div>
@@ -482,6 +500,7 @@ body::before{content:'';position:fixed;inset:0;background:repeating-linear-gradi
   <div id="log-sum" style="margin-top:10px;font-size:11px;color:var(--text2);font-family:'JetBrains Mono',monospace;padding-top:10px;border-top:1px solid var(--border);"></div>
 </div>
 
+<!-- ANALYTICS -->
 <div class="page" id="page-analytics">
   <div class="ph">PERFORMANCE <span>ANALYTICS</span></div>
   <div class="ps">All closed trades</div>
@@ -496,6 +515,7 @@ body::before{content:'';position:fixed;inset:0;background:repeating-linear-gradi
   </div>
 </div>
 
+<!-- BACKUP -->
 <div class="page" id="page-backup">
   <div class="ph">BACKUP & <span>RESTORE</span></div>
   <div class="ps">Export after every session to never lose data</div>
@@ -527,6 +547,7 @@ body::before{content:'';position:fixed;inset:0;background:repeating-linear-gradi
   </div>
 </div>
 
+<!-- CLOSE MODAL -->
 <div class="moverlay" id="cm">
   <div class="modal">
     <h2>CLOSE <span style="color:var(--green)">TRADE</span></h2>
@@ -556,9 +577,9 @@ body::before{content:'';position:fixed;inset:0;background:repeating-linear-gradi
 <div class="toast" id="toast"></div>
 
 <script>
-// ═══════════════════════════════════════════════════
+// ═══════════════════════════════════════════
 // LOT SIZE DATA — 214 NSE F&O Stocks (May 2026)
-// ═══════════════════════════════════════════════════
+// ═══════════════════════════════════════════
 const LD={
   "BANKNIFTY":{n:"Nifty Bank",l:30},"FINNIFTY":{n:"Finnifty",l:60},"MIDCPNIFTY":{n:"Nifty Midcap Select",l:120},"NIFTY":{n:"Nifty 50",l:65},"NIFTYNXT50":{n:"Nifty Next 50",l:25},
   "360ONE":{n:"360 One WAM",l:500},"ABB":{n:"ABB",l:125},"ABCAPITAL":{n:"Aditya Birla Capital",l:3100},"ADANIENSOL":{n:"Adani Energy Solutions",l:675},"ADANIENT":{n:"Adani Enterprises",l:309},"ADANIGREEN":{n:"Adani Green Energy",l:600},"ADANIPORTS":{n:"Adani Ports & SEZ",l:475},"ADANIPOWER":{n:"Adani Power",l:3550},"ALKEM":{n:"Alkem Laboratories",l:125},"AMBER":{n:"Amber Enterprises",l:100},"AMBUJACEM":{n:"Ambuja Cements",l:1050},"ANGELONE":{n:"Angel One",l:2500},"APLAPOLLO":{n:"APL Apollo Tubes",l:350},"APOLLOHOSP":{n:"Apollo Hospitals",l:125},"ASHOKLEY":{n:"Ashok Leyland",l:5000},"ASIANPAINT":{n:"Asian Paints",l:250},"ASTRAL":{n:"Astral",l:425},"AUBANK":{n:"AU Small Finance Bank",l:1000},"AUROPHARMA":{n:"Aurobindo Pharma",l:550},"AXISBANK":{n:"Axis Bank",l:625},
@@ -586,22 +607,30 @@ const LD={
   "YESBANK":{n:"Yes Bank",l:31100},"ZYDUSLIFE":{n:"Zydus Life",l:900}
 };
 
-// ═══════════════════════════════════════════════════
+// ═══════════════════════════════════════════
 // STATE
-// ═══════════════════════════════════════════════════
+// ═══════════════════════════════════════════
 let trades = JSON.parse(localStorage.getItem('tx_trades')||'[]');
-let angelJwt = localStorage.getItem('tx_angel_jwt')||'';
-let angelApiKey = localStorage.getItem('tx_angel_apikey')||'';
+let aoToken = localStorage.getItem('tx_ao_token')||'';
+let aoFeedToken = localStorage.getItem('tx_ao_feed')||'';
 let autoRefresh = false;
 let autoTimer = null;
+
+// AngelOne SmartAPI config
+const AO_API_KEY = '43vRP9eM';         // your api key pre-filled
+const AO_BASE    = 'https://apiconnect.angelbroking.com';
+
 function sv(){localStorage.setItem('tx_trades',JSON.stringify(trades));}
 
-// ═══════════════════════════════════════════════════
+// ═══════════════════════════════════════════
 // INIT
-// ═══════════════════════════════════════════════════
+// ═══════════════════════════════════════════
 document.getElementById('f-date').value = new Date().toISOString().split('T')[0];
-if(angelJwt) document.getElementById('angel-jwt').value = angelJwt;
-if(angelApiKey) document.getElementById('angel-apikey').value = angelApiKey;
+document.getElementById('ao-apikey').value = AO_API_KEY;
+// pre-fill saved creds
+const savedClient = localStorage.getItem('tx_ao_client');
+if(savedClient) document.getElementById('ao-client').value = savedClient;
+
 setInterval(()=>{
   const n=new Date();
   document.getElementById('clk').textContent=n.toLocaleTimeString('en-IN',{hour12:false});
@@ -609,9 +638,9 @@ setInterval(()=>{
 },1000);
 renderDash();
 
-// ═══════════════════════════════════════════════════
+// ═══════════════════════════════════════════
 // NAVIGATION
-// ═══════════════════════════════════════════════════
+// ═══════════════════════════════════════════
 function sp(id){
   document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
   document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
@@ -623,62 +652,331 @@ function sp(id){
   if(id==='analytics')renderAnalytics();
 }
 
-// ═══════════════════════════════════════════════════
-// ANGEL ONE API
-// ═══════════════════════════════════════════════════
-function saveToken(){
-  angelJwt=document.getElementById('angel-jwt').value.trim();
-  angelApiKey=document.getElementById('angel-apikey').value.trim();
-  localStorage.setItem('tx_angel_jwt',angelJwt);
-  localStorage.setItem('tx_angel_apikey',angelApiKey);
-  showToast('Token saved ✓','s');
-  setTokenStatus('✓ Token saved. Click Test Connection to verify.','var(--green)');
+// ═══════════════════════════════════════════
+// ANGELONE SMARTAPI
+// ═══════════════════════════════════════════
+
+function saveAngelCreds(){
+  const client = document.getElementById('ao-client').value.trim();
+  localStorage.setItem('tx_ao_client', client);
+  showToast('Credentials saved ✓','s');
 }
 
-function getAngelHeaders() {
-  return {
-    'Content-Type': 'application/json',
-    'Accept': 'application/json',
-    'X-UserType': 'USER',
-    'X-SourceID': 'WEB',
-    'X-ClientLocalIP': '127.0.0.1',
-    'X-ClientPublicIP': '127.0.0.1',
-    'X-MACAddress': '00:00:00:00:00:00',
-    'X-PrivateKey': angelApiKey,
-    'Authorization': 'Bearer ' + angelJwt
+async function angelLogin(){
+  const apikey   = document.getElementById('ao-apikey').value.trim() || AO_API_KEY;
+  const client   = document.getElementById('ao-client').value.trim();
+  const password = document.getElementById('ao-password').value.trim();
+  const totp     = document.getElementById('ao-totp').value.trim();
+
+  if(!client || !password || !totp){
+    showToast('Fill Client ID, Password and TOTP','e');
+    return;
+  }
+
+  setAOStatus('🔐 Logging in to AngelOne...','var(--amber)');
+
+  const payload = {
+    clientcode: client,
+    password:   password,
+    totp:       totp
   };
-}
 
-async function testToken(){
-  if(!angelJwt || !angelApiKey){showToast('Enter credentials first','e');return;}
-  setTokenStatus('Testing...','var(--amber)');
-  try{
-    const r=await fetch('https://apiconnect.angelbroking.com/rest/secure/angelbroking/market/v1/quote/',{
-      method:'POST',
-      headers: getAngelHeaders(),
-      body:JSON.stringify({
-        mode:"LTP",
-        exchangeTokens:{"NSE":["26000"]}
-      })
+  try {
+    const r = await fetch(`${AO_BASE}/rest/auth/angelbroking/user/v1/loginByPassword`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept':        'application/json',
+        'X-UserType':    'USER',
+        'X-SourceID':    'WEB',
+        'X-ClientLocalIP': '127.0.0.1',
+        'X-ClientPublicIP':'127.0.0.1',
+        'X-MACAddress':  '00:00:00:00:00:00',
+        'X-PrivateKey':  apikey
+      },
+      body: JSON.stringify(payload)
     });
-    if(r.status===200){
-      setTokenStatus('✅ Connected! Angel One API working.','var(--green)');
-      showToast('Angel One API connected ✓','s');
-      fetchQuotes();
-    } else if(r.status===401 || r.status===403){
-      setTokenStatus('❌ Invalid token/keys. Please regenerate from Angel SmartAPI.','var(--red)');
-    } else {
-      const d=await r.json();
-      setTokenStatus('⚠️ Status '+r.status+': '+(d.message||'Check token'),'var(--amber)');
+
+    if(r.status === 0 || !r.ok){
+      throw new Error('CORS_BLOCK');
     }
-  }catch(e){
-    setTokenStatus('⚠️ CORS blocked. Angel One API works from local HTML file. Try saving & opening from desktop.','var(--amber)');
-    showToast('Note: Run from local file for full API access','w');
+
+    const data = await r.json();
+
+    if(data.status === true && data.data?.jwtToken){
+      aoToken     = data.data.jwtToken;
+      aoFeedToken = data.data.feedToken || '';
+      localStorage.setItem('tx_ao_token', aoToken);
+      localStorage.setItem('tx_ao_feed',  aoFeedToken);
+      localStorage.setItem('tx_ao_client', client);
+      setAOStatus('✅ Logged in! JWT token saved. Ready to fetch data.','var(--green)');
+      showToast('AngelOne login successful ✓','s');
+      fetchQuotes();
+    } else {
+      const msg = data.message || 'Login failed';
+      setAOStatus('❌ '+msg,'var(--red)');
+      showToast(msg,'e');
+    }
+  } catch(e) {
+    if(e.message === 'CORS_BLOCK' || e.message.includes('Failed to fetch')){
+      setAOStatus(
+        '⚠️ CORS blocked by browser. <strong>Fix:</strong> Save this HTML file to your desktop, then open it by double-clicking (file:/// in address bar). AngelOne API works fine from local files.',
+        'var(--amber)'
+      );
+    } else {
+      setAOStatus('❌ Error: '+e.message,'var(--red)');
+    }
   }
 }
 
-function setTokenStatus(msg,color){
-  document.getElementById('token-status').innerHTML=`<span style="color:${color}">${msg}</span>`;
+async function testAngelConnection(){
+  if(!aoToken){
+    showToast('Login first to get a token','w');
+    return;
+  }
+  setAOStatus('Testing token...','var(--amber)');
+  try{
+    const apikey = document.getElementById('ao-apikey').value.trim() || AO_API_KEY;
+    const client = localStorage.getItem('tx_ao_client')||'';
+    const r = await fetch(`${AO_BASE}/rest/secure/angelbroking/user/v1/getProfile`,{
+      method:'GET',
+      headers:{
+        'Authorization':'Bearer '+aoToken,
+        'Accept':'application/json',
+        'X-UserType':'USER','X-SourceID':'WEB',
+        'X-ClientLocalIP':'127.0.0.1','X-ClientPublicIP':'127.0.0.1',
+        'X-MACAddress':'00:00:00:00:00:00',
+        'X-PrivateKey': apikey
+      }
+    });
+    if(!r.ok) throw new Error('Status '+r.status);
+    const data = await r.json();
+    if(data.status===true){
+      const name = data.data?.name || client;
+      setAOStatus(`✅ Connected! Logged in as: <strong style="color:var(--green)">${name}</strong>`,'var(--green)');
+      showToast('Token valid ✓','s');
+    } else {
+      setAOStatus('❌ Token expired or invalid. Please login again.','var(--red)');
+    }
+  }catch(e){
+    setAOStatus('⚠️ '+e.message+' — Make sure you opened this file locally (file:/// path)','var(--amber)');
+  }
+}
+
+function setAOStatus(msg,color){
+  document.getElementById('ao-status').innerHTML=`<span style="color:${color}">${msg}</span>`;
+}
+
+// AngelOne instrument tokens for indices
+const AO_TOKENS = {
+  'NIFTY':     {token:'26000', exch:'NSE', name:'NIFTY 50'},
+  'BANKNIFTY': {token:'26009', exch:'NSE', name:'BANK NIFTY'},
+  'FINNIFTY':  {token:'26037', exch:'NSE', name:'FIN NIFTY'},
+  'MIDCPNIFTY':{token:'26074', exch:'NSE', name:'MIDCAP NIFTY'},
+  'SENSEX':    {token:'1',     exch:'BSE', name:'SENSEX'},
+};
+
+// AngelOne option chain symbolTokens mapping (common ones for chain)
+const AO_OC_SYMBOLS = {
+  'NIFTY':     'NIFTY',
+  'BANKNIFTY': 'BANKNIFTY',
+  'FINNIFTY':  'FINNIFTY',
+  'MIDCPNIFTY':'MIDCPNIFTY',
+  'SENSEX':    'SENSEX',
+};
+
+async function aoHeaders(){
+  const apikey = document.getElementById('ao-apikey').value.trim() || AO_API_KEY;
+  const client = localStorage.getItem('tx_ao_client')||'';
+  return {
+    'Authorization': 'Bearer '+aoToken,
+    'Content-Type':  'application/json',
+    'Accept':        'application/json',
+    'X-UserType':    'USER',
+    'X-SourceID':    'WEB',
+    'X-ClientLocalIP':'127.0.0.1',
+    'X-ClientPublicIP':'127.0.0.1',
+    'X-MACAddress':  '00:00:00:00:00:00',
+    'X-PrivateKey':  apikey
+  };
+}
+
+async function fetchQuotes(){
+  if(!aoToken){showToast('Login to AngelOne first','w');return;}
+  document.getElementById('quote-strip').innerHTML=`<div style="color:var(--text2);font-size:12px;padding:8px;animation:npulse 1s infinite">⟳ Fetching live quotes...</div>`;
+
+  const exchangeTokens = {NSE:[], BSE:[]};
+  Object.values(AO_TOKENS).forEach(t=>{
+    exchangeTokens[t.exch] = exchangeTokens[t.exch]||[];
+    exchangeTokens[t.exch].push(t.token);
+  });
+
+  // Build payload for LTP data
+  const payload = {
+    mode: 'LTP',
+    exchangeTokens: exchangeTokens
+  };
+
+  try{
+    const hdrs = await aoHeaders();
+    const r = await fetch(`${AO_BASE}/rest/secure/angelbroking/market/v1/quote/`,{
+      method:'POST',
+      headers: hdrs,
+      body: JSON.stringify(payload)
+    });
+    if(!r.ok) throw new Error('HTTP '+r.status);
+    const data = await r.json();
+    if(data.status !== true) throw new Error(data.message||'Quote fetch failed');
+
+    const fetched = data.data?.fetched||[];
+    const strip = document.getElementById('quote-strip');
+
+    if(!fetched.length){
+      strip.innerHTML=corsNote();
+      return;
+    }
+
+    // Map token → name
+    const tokenMap={};
+    Object.entries(AO_TOKENS).forEach(([sym,info])=>{tokenMap[info.token]={sym,name:info.name};});
+
+    strip.innerHTML = fetched.map(q=>{
+      const info = tokenMap[q.symbolToken]||{name:q.tradingSymbol};
+      const ltp  = parseFloat(q.ltp)||0;
+      const chg  = parseFloat(q.percentChange)||0;
+      const isUp = chg >= 0;
+      return `<div class="quote-card">
+        <div class="qc-sym">${info.name}</div>
+        <div class="qc-val" style="color:${isUp?'var(--green)':'var(--red)'}">${ltp.toLocaleString('en-IN',{maximumFractionDigits:2})}</div>
+        <div class="qc-chg ${isUp?'up':'dn'}">${isUp?'+':''}${chg.toFixed(2)}%</div>
+      </div>`;
+    }).join('');
+
+    document.getElementById('quote-time').textContent = 'Updated: '+new Date().toLocaleTimeString('en-IN',{hour12:false});
+  }catch(e){
+    document.getElementById('quote-strip').innerHTML=corsNote(e.message);
+  }
+}
+
+async function fetchOptionChain(){
+  if(!aoToken){showToast('Login to AngelOne first','w');return;}
+  const sym = document.getElementById('oc-symbol').value;
+  document.getElementById('oc-status').textContent='Loading...';
+  document.getElementById('oc-wrap').innerHTML=`<div style="color:var(--text2);font-size:12px;padding:20px;text-align:center;animation:npulse 1s infinite">⟳ Fetching option chain...</div>`;
+
+  try{
+    const hdrs = await aoHeaders();
+    // AngelOne option chain endpoint
+    const r = await fetch(`${AO_BASE}/rest/secure/angelbroking/marketData/v1/optionChain`,{
+      method:'POST',
+      headers: hdrs,
+      body: JSON.stringify({
+        name: AO_OC_SYMBOLS[sym]||sym,
+        expirydate: getNextThursday()
+      })
+    });
+
+    if(!r.ok) throw new Error('HTTP '+r.status);
+    const data = await r.json();
+    if(data.status !== true) throw new Error(data.message||'Option chain failed');
+
+    renderOptionChainAO(data.data, sym);
+    document.getElementById('oc-status').textContent='✓ Live · '+new Date().toLocaleTimeString('en-IN',{hour12:false});
+  }catch(e){
+    document.getElementById('oc-wrap').innerHTML=corsNote(e.message);
+    document.getElementById('oc-status').textContent='Error';
+  }
+}
+
+function renderOptionChainAO(data, sym){
+  if(!data || !data.length){
+    document.getElementById('oc-wrap').innerHTML='<div style="color:var(--text2);padding:16px;text-align:center">No option chain data returned</div>';
+    return;
+  }
+
+  // data is array of {strikeprice, ce:{ltp,oi,iv,delta,theta,...}, pe:{...}}
+  const sorted = [...data].sort((a,b)=>(a.strikePrice||a.strikeprice)-(b.strikePrice||b.strikeprice));
+  const spot   = data[0]?.underlyingLTP || data[0]?.underlyingltp || 0;
+
+  // find ATM
+  const strikes = sorted.map(d=>d.strikePrice||d.strikeprice);
+  const atm = strikes.reduce((a,b)=>Math.abs(b-spot)<Math.abs(a-spot)?b:a);
+  const atmIdx = strikes.indexOf(atm);
+  const visible = sorted.slice(Math.max(0,atmIdx-5), Math.min(sorted.length,atmIdx+6));
+
+  let maxCeOI=0,maxPeOI=0,maxCeStrike=0,maxPeStrike=0;
+  sorted.forEach(d=>{
+    const s = d.strikePrice||d.strikeprice;
+    const ceOI = d.ce?.openinterest||d.ce?.oi||0;
+    const peOI = d.pe?.openinterest||d.pe?.oi||0;
+    if(ceOI>maxCeOI){maxCeOI=ceOI;maxCeStrike=s;}
+    if(peOI>maxPeOI){maxPeOI=peOI;maxPeStrike=s;}
+  });
+
+  const fm  = v=>v!=null&&v!==''?parseFloat(v).toFixed(2):'—';
+  const fOI = v=>{v=parseFloat(v)||0;return v>0?(v/1000).toFixed(0)+'K':'—';};
+  const fG  = v=>v!=null&&v!==''?parseFloat(v).toFixed(3):'—';
+
+  let html=`<table class="oc-table">
+    <thead>
+      <tr>
+        <th class="ce-h" colspan="5">CALLS (CE)</th>
+        <th class="strike-h">STRIKE</th>
+        <th class="pe-h" colspan="5">PUTS (PE)</th>
+      </tr>
+      <tr>
+        <th class="ce-h">LTP</th><th class="ce-h">OI</th><th class="ce-h">IV%</th><th class="ce-h">Delta</th><th class="ce-h">Theta</th>
+        <th class="strike-h">PRICE</th>
+        <th class="pe-h">LTP</th><th class="pe-h">OI</th><th class="pe-h">IV%</th><th class="pe-h">Delta</th><th class="pe-h">Theta</th>
+      </tr>
+    </thead><tbody>`;
+
+  visible.forEach(d=>{
+    const s    = d.strikePrice||d.strikeprice;
+    const ce   = d.ce||{};
+    const pe   = d.pe||{};
+    const isATM= s===atm;
+    const ceOI = ce.openinterest||ce.oi||0;
+    const peOI = pe.openinterest||pe.oi||0;
+    html+=`<tr${isATM?' style="background:rgba(255,184,0,0.04)"':''}>
+      <td class="ce-ltp ce-col" style="${s===maxCeStrike?'font-weight:800':''}">${fm(ce.ltp||ce.last_price)}</td>
+      <td class="ce-col">${fOI(ceOI)}</td>
+      <td class="ce-col greeks-val">${ce.impliedvolatility!=null?(parseFloat(ce.impliedvolatility)).toFixed(1)+'%':'—'}</td>
+      <td class="ce-col greeks-val">${fG(ce.delta)}</td>
+      <td class="ce-col greeks-val">${fG(ce.theta)}</td>
+      <td class="strike-cell">${s}${isATM?' ★':''}</td>
+      <td class="pe-ltp" style="${s===maxPeStrike?'font-weight:800':''}">${fm(pe.ltp||pe.last_price)}</td>
+      <td>${fOI(peOI)}</td>
+      <td class="greeks-val">${pe.impliedvolatility!=null?(parseFloat(pe.impliedvolatility)).toFixed(1)+'%':'—'}</td>
+      <td class="greeks-val">${fG(pe.delta)}</td>
+      <td class="greeks-val">${fG(pe.theta)}</td>
+    </tr>`;
+  });
+  html+='</tbody></table>';
+  document.getElementById('oc-wrap').innerHTML=html;
+
+  const pcr=(maxPeOI/Math.max(maxCeOI,1)).toFixed(2);
+  const bias=maxPeStrike>maxCeStrike?'Bullish (Put writers at '+maxPeStrike+')':'Bearish (Call writers capping '+maxCeStrike+')';
+  const spotFmt=spot?spot.toLocaleString('en-IN',{maximumFractionDigits:2}):'—';
+  document.getElementById('oc-analysis').innerHTML=`
+    <strong style="color:var(--angel)">OI Analysis:</strong> &nbsp;
+    Spot: <strong style="color:var(--amber)">${spotFmt}</strong> &nbsp;|&nbsp;
+    ATM: <strong style="color:var(--amber)">${atm}</strong> &nbsp;|&nbsp;
+    Max CE OI: <strong style="color:var(--red)">${maxCeStrike} (${fOI(maxCeOI)})</strong> &nbsp;|&nbsp;
+    Max PE OI: <strong style="color:var(--green)">${maxPeStrike} (${fOI(maxPeOI)})</strong> &nbsp;|&nbsp;
+    PCR: <strong style="color:${parseFloat(pcr)>1?'var(--green)':'var(--red)'}">${pcr}</strong> &nbsp;|&nbsp;
+    Bias: <strong style="color:var(--cyan)">${bias}</strong>
+  `;
+}
+
+function corsNote(extra=''){
+  return `<div class="info-amber" style="margin:8px;font-size:12px;">
+    ⚠️ ${extra||'API call blocked.'}<br><br>
+    <strong>AngelOne API requires running from a local file:</strong><br>
+    1. Save this HTML file to your desktop<br>
+    2. Double-click to open in Chrome — address bar should show <code>file:///</code><br>
+    3. Login again and it will work perfectly.
+  </div>`;
 }
 
 function getNextThursday(){
@@ -689,186 +987,17 @@ function getNextThursday(){
   return d.toISOString().split('T')[0];
 }
 
-// Security IDs for major indices (Angel One SmartAPI)
-const ANGEL_IDS={
-  'NIFTY':{id:'26000',seg:'NSE',name:'NIFTY 50'},
-  'BANKNIFTY':{id:'26009',seg:'NSE',name:'BANK NIFTY'},
-  'FINNIFTY':{id:'26037',seg:'NSE',name:'FIN NIFTY'},
-  'MIDCPNIFTY':{id:'26074',seg:'NSE',name:'MIDCAP NIFTY'},
-  'SENSEX':{id:'51',seg:'BSE',name:'SENSEX'}
-};
-
-async function fetchQuotes(){
-  if(!angelJwt || !angelApiKey){showToast('Add Angel One token first','w');return;}
-  document.getElementById('quote-strip').innerHTML=`<div style="color:var(--text2);font-size:12px;padding:8px;animation:npulse 1s infinite">Fetching live data...</div>`;
-  
-  const tokensNSE = Object.values(ANGEL_IDS).filter(i=>i.seg==='NSE').map(i=>i.id);
-  const tokensBSE = Object.values(ANGEL_IDS).filter(i=>i.seg==='BSE').map(i=>i.id);
-
-  try{
-    const r=await fetch('https://apiconnect.angelbroking.com/rest/secure/angelbroking/market/v1/quote/',{
-      method:'POST',
-      headers: getAngelHeaders(),
-      body:JSON.stringify({
-        mode:"LTP",
-        exchangeTokens:{"NSE":tokensNSE, "BSE":tokensBSE}
-      })
-    });
-    
-    if(!r.ok) throw new Error('API Error');
-    
-    const d=await r.json();
-    const fetched = d.data?.fetched || [];
-    const strip=document.getElementById('quote-strip');
-    
-    strip.innerHTML = Object.entries(ANGEL_IDS).map(([sym,info])=>{
-      const quote = fetched.find(q=>q.symbolToken===info.id);
-      const ltpStr = quote ? quote.ltp.toLocaleString('en-IN',{maximumFractionDigits:2}) : '—';
-      return `<div class="quote-card">
-        <div class="qc-sym">${info.name}</div>
-        <div class="qc-val" style="color:var(--green)">${ltpStr}</div>
-        <div class="qc-chg up">LIVE</div>
-      </div>`;
-    }).join('');
-    
-  }catch(e){
-    document.getElementById('quote-strip').innerHTML=`<div class="info-amber" style="font-size:12px;padding:10px 14px;">
-      ⚠️ API blocked in browser (CORS). <strong>To use live data:</strong> Save this file to your desktop and open it directly in Chrome (not via a web server). File path should start with <code>file:///</code>
-    </div>`;
-  }
-  document.getElementById('quote-time').textContent='Updated: '+new Date().toLocaleTimeString('en-IN',{hour12:false});
-}
-
-async function fetchOptionChain(){
-  if(!angelJwt || !angelApiKey){showToast('Add Angel One token first','w');return;}
-  const sym=document.getElementById('oc-symbol').value;
-  const info=ANGEL_IDS[sym];
-  if(!info){showToast('Select a valid index','e');return;}
-  
-  document.getElementById('oc-status').textContent='Loading...';
-  document.getElementById('oc-wrap').innerHTML=`<div style="color:var(--text2);font-size:12px;padding:20px;text-align:center;animation:npulse 1s infinite">⟳ Fetching option chain...</div>`;
-  
-  try{
-    // Angel One does not have a direct full Option Chain REST endpoint.
-    // Making a sample call to Market Data API to validate structure/connection.
-    const r=await fetch('https://apiconnect.angelbroking.com/rest/secure/angelbroking/market/v1/quote/',{
-      method:'POST',
-      headers: getAngelHeaders(),
-      body:JSON.stringify({mode:"FULL",exchangeTokens:{[info.seg]:[info.id]}})
-    });
-    if(!r.ok){
-      const d=await r.json();
-      throw new Error(d.message||'API Error '+r.status);
-    }
-    const data=await r.json();
-    
-    // Pass raw data to mapper (Expects formatting based on Angel's payload)
-    renderOptionChain(data,sym);
-    document.getElementById('oc-status').textContent='✓ Live · '+new Date().toLocaleTimeString('en-IN',{hour12:false});
-  }catch(e){
-    document.getElementById('oc-wrap').innerHTML=`<div class="info-amber" style="margin:8px;font-size:12px;">
-      ⚠️ ${e.message}<br><br>
-      <strong>Note:</strong> Angel One SmartAPI requires resolving specific strike tokens from their Scrip Master JSON. A direct single-call option chain is not natively supported. Ensure you route via a custom backend or handle token resolution if needed.
-    </div>`;
-    document.getElementById('oc-status').textContent='Error';
-  }
-}
-
-function renderOptionChain(data,sym){
-  // Note: Adapting Angel One format gracefully. Natively, mapping requires full token loop.
-  const lp=data.data?.fetched?.[0]?.ltp||0;
-  const oc=data.data?.oc||{};
-  const strikes=Object.keys(oc).map(Number).sort((a,b)=>a-b);
-  if(!strikes.length){document.getElementById('oc-wrap').innerHTML='<div style="color:var(--text2);padding:16px">Option chain data mapping requires resolved strike tokens via SmartAPI Scrip Master. See docs.</div>';return;}
-  
-  // Find ATM
-  const atm=strikes.reduce((a,b)=>Math.abs(b-lp)<Math.abs(a-lp)?b:a);
-  
-  // Find max OI strikes
-  let maxCeOI=0,maxPeOI=0,maxCeStrike=0,maxPeStrike=0;
-  strikes.forEach(s=>{
-    const ce=oc[s]?.ce;const pe=oc[s]?.pe;
-    if(ce?.oi>maxCeOI){maxCeOI=ce.oi;maxCeStrike=s;}
-    if(pe?.oi>maxPeOI){maxPeOI=pe.oi;maxPeStrike=s;}
-  });
-
-  // Show 10 strikes around ATM
-  const atmIdx=strikes.indexOf(atm);
-  const start=Math.max(0,atmIdx-5);
-  const end=Math.min(strikes.length,atmIdx+6);
-  const visible=strikes.slice(start,end);
-
-  const fm=v=>v!=null?v.toFixed(2):'—';
-  const fOI=v=>v!=null?(v/1000).toFixed(0)+'K':'—';
-  const fG=v=>v!=null?v.toFixed(3):'—';
-
-  let html=`<table class="oc-table">
-    <thead>
-      <tr>
-        <th class="ce-h" colspan="6">CALLS (CE)</th>
-        <th class="strike-h">STRIKE</th>
-        <th class="pe-h" colspan="6">PUTS (PE)</th>
-      </tr>
-      <tr>
-        <th class="ce-h">LTP</th><th class="ce-h">OI</th><th class="ce-h">OI Chg</th><th class="ce-h">IV%</th><th class="ce-h">Delta</th><th class="ce-h">Theta</th>
-        <th class="strike-h">PRICE</th>
-        <th class="pe-h">LTP</th><th class="pe-h">OI</th><th class="pe-h">OI Chg</th><th class="pe-h">IV%</th><th class="pe-h">Delta</th><th class="pe-h">Theta</th>
-      </tr>
-    </thead><tbody>`;
-
-  visible.forEach(s=>{
-    const ce=oc[s]?.ce;const pe=oc[s]?.pe;
-    const isATM=s===atm;
-    const ceOIChg=(ce?.oi||0)-(ce?.previous_oi||0);
-    const peOIChg=(pe?.oi||0)-(pe?.previous_oi||0);
-    const ceOIClass=ceOIChg>0?'oi-up':'oi-dn';
-    const peOIClass=peOIChg>0?'oi-up':'oi-dn';
-    const isCeMax=s===maxCeStrike;
-    const isPeMax=s===maxPeStrike;
-    html+=`<tr class="${isATM?'atm-row':''}">
-      <td class="ce-ltp${isCeMax?' '+'':''}${isATM?' ':''}ce-col" style="${isCeMax?'font-weight:800;color:var(--green);':''}">${fm(ce?.last_price)}</td>
-      <td class="ce-col">${fOI(ce?.oi)}</td>
-      <td class="ce-col ${ceOIClass}">${ceOIChg>0?'+':''}${fOI(ceOIChg)}</td>
-      <td class="ce-col greeks-val">${ce?.implied_volatility!=null?(ce.implied_volatility*100).toFixed(1)+'%':'—'}</td>
-      <td class="ce-col greeks-val">${fG(ce?.greeks?.delta)}</td>
-      <td class="ce-col greeks-val">${fG(ce?.greeks?.theta)}</td>
-      <td class="strike-cell">${s}${isATM?' ★':''}</td>
-      <td class="pe-ltp${isPeMax?' '+'':''}" style="${isPeMax?'font-weight:800;color:var(--red);':''}">${fm(pe?.last_price)}</td>
-      <td>${fOI(pe?.oi)}</td>
-      <td class="${peOIClass}">${peOIChg>0?'+':''}${fOI(peOIChg)}</td>
-      <td class="greeks-val">${pe?.implied_volatility!=null?(pe.implied_volatility*100).toFixed(1)+'%':'—'}</td>
-      <td class="greeks-val">${fG(pe?.greeks?.delta)}</td>
-      <td class="greeks-val">${fG(pe?.greeks?.theta)}</td>
-    </tr>`;
-  });
-  html+='</tbody></table>';
-  document.getElementById('oc-wrap').innerHTML=html;
-
-  // Analysis
-  const pcr=(maxPeOI/Math.max(maxCeOI,1)).toFixed(2);
-  const bias=maxPeStrike>maxCeStrike?'Bullish (Put writers protecting '+maxPeStrike+')':'Bearish (Call writers capping '+maxCeStrike+')';
-  document.getElementById('oc-analysis').innerHTML=`
-    <strong style="color:var(--cyan)">OI Analysis:</strong> &nbsp;
-    Spot: <strong style="color:var(--amber)">${lp.toLocaleString('en-IN',{maximumFractionDigits:2})}</strong> &nbsp;|&nbsp;
-    ATM: <strong style="color:var(--amber)">${atm}</strong> &nbsp;|&nbsp;
-    Max CE OI: <strong style="color:var(--red)">${maxCeStrike} (${fOI(maxCeOI)})</strong> &nbsp;|&nbsp;
-    Max PE OI: <strong style="color:var(--green)">${maxPeStrike} (${fOI(maxPeOI)})</strong> &nbsp;|&nbsp;
-    PCR: <strong style="color:${parseFloat(pcr)>1?'var(--green)':'var(--red)'}">${pcr}</strong> &nbsp;|&nbsp;
-    Bias: <strong style="color:var(--cyan)">${bias}</strong>
-  `;
-}
-
 function toggleAuto(){
   autoRefresh=!autoRefresh;
   document.getElementById('auto-btn').textContent='Auto: '+(autoRefresh?'ON':'OFF');
-  document.getElementById('auto-btn').style.color=autoRefresh?'var(--green)':'';
+  document.getElementById('auto-btn').style.color=autoRefresh?'var(--angel)':'';
   if(autoRefresh){autoTimer=setInterval(()=>{fetchQuotes();fetchOptionChain();},30000);}
   else{clearInterval(autoTimer);}
 }
 
-// ═══════════════════════════════════════════════════
+// ═══════════════════════════════════════════
 // STOCK SEARCH
-// ═══════════════════════════════════════════════════
+// ═══════════════════════════════════════════
 function ssFilter(){
   const v=document.getElementById('f-stock').value.toUpperCase().trim();
   const dd=document.getElementById('ss-dd');
@@ -892,9 +1021,9 @@ function ssPick(s){
 }
 document.addEventListener('click',e=>{if(!e.target.closest('.ss-wrap'))document.getElementById('ss-dd').classList.remove('open');});
 
-// ═══════════════════════════════════════════════════
+// ═══════════════════════════════════════════
 // CALC RISK
-// ═══════════════════════════════════════════════════
+// ═══════════════════════════════════════════
 function calcR(){
   const en=parseFloat(document.getElementById('f-entry').value)||0;
   const sl=parseFloat(document.getElementById('f-sl').value)||0;
@@ -917,9 +1046,9 @@ function calcR(){
   document.getElementById('cc-tot').textContent=f(tot);
 }
 
-// ═══════════════════════════════════════════════════
+// ═══════════════════════════════════════════
 // SAVE TRADE
-// ═══════════════════════════════════════════════════
+// ═══════════════════════════════════════════
 function saveTrade(){
   const stock=document.getElementById('f-stock').value.trim().toUpperCase();
   const entry=parseFloat(document.getElementById('f-entry').value);
@@ -975,9 +1104,9 @@ function clearForm(){
   calcR();
 }
 
-// ═══════════════════════════════════════════════════
+// ═══════════════════════════════════════════
 // DASHBOARD
-// ═══════════════════════════════════════════════════
+// ═══════════════════════════════════════════
 function renderDash(){
   const cl=trades.filter(t=>t.status!=='Open');
   const wn=trades.filter(t=>t.status==='Win');
@@ -1034,9 +1163,9 @@ function renderDash(){
     </div>`;}).join('');
 }
 
-// ═══════════════════════════════════════════════════
+// ═══════════════════════════════════════════
 // LOG
-// ═══════════════════════════════════════════════════
+// ═══════════════════════════════════════════
 function renderLog(){
   let f=[...trades];
   const s=document.getElementById('ls').value.toLowerCase();
@@ -1085,9 +1214,9 @@ function renderLog(){
   document.getElementById('log-sum').innerHTML=`${f.length} trades · Closed: ${cp.length} · P&L: <strong style="color:${tp2>=0?'var(--green)':'var(--red)'}">${tp2>=0?'+':'−'}₹${Math.abs(tp2).toLocaleString('en-IN',{maximumFractionDigits:0})}</strong>`;
 }
 
-// ═══════════════════════════════════════════════════
+// ═══════════════════════════════════════════
 // ANALYTICS
-// ═══════════════════════════════════════════════════
+// ═══════════════════════════════════════════
 function renderAnalytics(){
   const cl=trades.filter(t=>t.status!=='Open');
   const wn=cl.filter(t=>t.status==='Win');
@@ -1153,9 +1282,9 @@ function renderAnalytics(){
     </div>`;}).join('')||`<div style="color:var(--text3);font-size:12px;padding:12px">No data yet</div>`;
 }
 
-// ═══════════════════════════════════════════════════
+// ═══════════════════════════════════════════
 // CLOSE MODAL
-// ═══════════════════════════════════════════════════
+// ═══════════════════════════════════════════
 function openCM(id){document.getElementById('cm-id').value=id;document.getElementById('cm-exit').value='';document.getElementById('cm-preview').innerHTML='';document.getElementById('cm').classList.add('open');}
 function closeCM(){document.getElementById('cm').classList.remove('open');}
 document.getElementById('cm').addEventListener('click',e=>{if(e.target===document.getElementById('cm'))closeCM();});
@@ -1179,15 +1308,15 @@ function doClose(){
   showToast('Trade closed ✓','s');
 }
 
-// ═══════════════════════════════════════════════════
+// ═══════════════════════════════════════════
 // DELETE & CLEAR
-// ═══════════════════════════════════════════════════
+// ═══════════════════════════════════════════
 function delTrade(id){if(!confirm('Delete?'))return;trades=trades.filter(t=>t.id!==id);sv();renderLog();renderDash();showToast('Deleted','e');}
 function clearAll(){if(!confirm('Delete ALL trades? Cannot undo!'))return;trades=[];sv();renderLog();renderDash();showToast('All cleared','e');}
 
-// ═══════════════════════════════════════════════════
+// ═══════════════════════════════════════════
 // EXPORT / IMPORT
-// ═══════════════════════════════════════════════════
+// ═══════════════════════════════════════════
 function exportCSV(){
   if(!trades.length){showToast('No trades','e');return;}
   const h=['Date','Stock','Company','Scanner','Type','Strike','Expiry','Lots','LotSize','Qty','Entry','SL','T1','T2','Exit','AlertTime','Alert%','StockPrice','Emotion','ExitReason','PnL','Status','Notes'];
@@ -1225,9 +1354,9 @@ function dzDrop(e){
 function dl(href,name){const a=document.createElement('a');a.href=href;a.download=name;a.click();}
 function td(){return new Date().toISOString().split('T')[0];}
 
-// ═══════════════════════════════════════════════════
+// ═══════════════════════════════════════════
 // TOAST
-// ═══════════════════════════════════════════════════
+// ═══════════════════════════════════════════
 function showToast(msg,type='s'){
   const t=document.getElementById('toast');
   t.textContent=msg;t.className='toast show '+type;
